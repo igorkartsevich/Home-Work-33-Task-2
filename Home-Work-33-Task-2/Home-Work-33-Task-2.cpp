@@ -35,14 +35,14 @@ public:
         gameField[std::rand() % 3][std::rand() % 3] = FISH;
 
         int boot_counter = 3;
-        do {
+        while (boot_counter != 0) {
             int x = std::rand() % 3;
             int y = std::rand() % 3;
             if (gameField[x][y] == EMPTY) {
                 gameField[x][y] = BOOT;
                 --boot_counter;
             }
-        } while (boot_counter != 0);
+        }
     }
 
     void getGameField() { // for control
