@@ -34,13 +34,13 @@ public:
         std::srand(time(NULL));
         gameField[std::rand() % 3][std::rand() % 3] = FISH;
 
-        int boot_counter = 3;
-        while (boot_counter != 0) {
+        int bootsCounter = 3;
+        while (bootsCounter != 0) {
             int x = std::rand() % 3;
             int y = std::rand() % 3;
             if (gameField[x][y] == EMPTY) {
                 gameField[x][y] = BOOT;
-                --boot_counter;
+                --bootsCounter;
             }
         }
     }
@@ -81,10 +81,10 @@ int main()
     game.setGameField();
     game.getGameField(); // for control
 
-    int att_counter = 0;
+    int attemptsCounter = 0;
     while (true) {
         try {
-            att_counter++;
+            ++attemptsCounter;
             game.makeAttempt();
             std::cout << "Without result! The game continues!\n\n";
         }
@@ -92,7 +92,7 @@ int main()
             std::cerr << exc.what() << std::endl << std::endl;
         }
         catch (const FishException& exc) {
-            std::cerr << exc.what() << " Attempts: " << att_counter << std::endl;
+            std::cerr << exc.what() << " Attempts: " << attemptsCounter << std::endl;
             return 0;
         }
         catch (const BootException& exc) {
